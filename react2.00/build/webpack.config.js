@@ -81,11 +81,7 @@ if (__DEV__) {
 
 // Don't split bundles during testing, since we only want import one bundle
 if (!__TEST__) {
-  webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  names: ['vendors', ],
-  minChunks: 2,
-})
-)
+  webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({name: ['app', 'polyfills'], minChunks: Infinity}))
 }
 
 // ------------------------------------
@@ -287,7 +283,7 @@ if (!__DEV__) {
 
   webpackConfig.plugins.push(
     new ExtractTextPlugin('[name].[contenthash].css', {
-      allChunks: true
+      //allChunks: true
     })
   )
 }
